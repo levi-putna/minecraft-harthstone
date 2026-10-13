@@ -19,7 +19,7 @@ A Hearthstone for Minecraft Bedrock Edition. Use it, stand your ground for 5 sec
 
 ## Installation (Windows)
 
-1. Download `hearthstone.mcaddon` from the [Releases](../../releases) page, or build it yourself (see [Building from source](#building-from-source)).
+1. Download the latest `.mcaddon` from the [Releases](../../releases/latest) page or the [`releases/`](releases) folder, or build it yourself (see [Building from source](#building-from-source)).
 2. **Double-click `hearthstone.mcaddon`.** Minecraft opens and shows "Successfully imported" for two packs: *Hearthstone* and *Hearthstone Resources*.
    - If nothing happens, right-click the file, choose **Open with**, and pick **Minecraft**.
 3. On the **Play** screen, click the ✏️ pencil icon next to your world, or use **Create New** for a new world.
@@ -93,7 +93,7 @@ To regenerate the textures after editing the pixel art in `tools/make_textures.p
 python3 tools/make_textures.py "$PWD"
 ```
 
-When releasing a new version, raise the `version` numbers in both `manifest.json` files so Minecraft replaces the old copy.
+When releasing a new version, raise the `version` numbers in both `manifest.json` files so Minecraft replaces the old copy, then copy the built file into `releases/` as `hearthstone-<version>.mcaddon`.
 
 ## Project layout
 
