@@ -2,13 +2,14 @@
 
 <img src="hearthstone_BP/pack_icon.png" width="96" align="right" alt="Hearthstone icon">
 
-A Hearthstone for Minecraft Bedrock Edition. Use it, stand your ground for 5 seconds, and you're teleported home. Take any damage while channeling and the spell is interrupted.
+A Hearthstone for Minecraft Bedrock Edition. Use it, stand still for 5 seconds, and you're teleported home. Take any damage or walk away while channeling and the spell is interrupted.
 
 ## Features
 
-- **5 second channel:** a progress bar shows on screen while you channel, with portal particles around you.
-- **Damage interrupts:** any damage (mobs, falling, fire, other players) cancels the channel. You can start again straight away.
-- **Teleports home:** you go to your bed or respawn anchor, even from the Nether or the End. If you haven't set one, you go to world spawn.
+- **5 second channel:** a progress bar shows on screen while a ring of blue flames spins and rises around you. Halfway through you start to float, the world wobbles, and the screen fades to dark blue just before you're sent home.
+- **Damage or walking interrupts:** any damage (mobs, falling, fire, other players) or walking cancels the channel, and all its screen effects stop at once. Looking around is fine. You can start again straight away.
+- **Teleports home:** you go to your bed or respawn anchor, even from the Nether or the End. If you haven't set one, you land near world spawn, following the world's `spawnradius` rule, like a normal respawn.
+- **Smooth arrival:** your destination is loaded while you channel, so you arrive on solid ground with a burst of blue flames.
 - **Free starter stone:** every player gets one Hearthstone the first time they join a world with the add-on turned on. This also works in existing worlds.
 - **Reusable:** the stone isn't used up.
 - **Craftable:** you can make more at a crafting table.
@@ -40,12 +41,12 @@ Double-click the newer `hearthstone.mcaddon`. It replaces the old version. Your 
 
    `world_behavior_packs.json`
    ```json
-   [{ "pack_id": "3e4165a1-baad-4564-a6b2-73a1747ad726", "version": [1, 0, 1] }]
+   [{ "pack_id": "3e4165a1-baad-4564-a6b2-73a1747ad726", "version": [1, 1, 0] }]
    ```
 
    `world_resource_packs.json`
    ```json
-   [{ "pack_id": "7b2e7f9b-0d2f-4d7b-827a-e92ff37a3f34", "version": [1, 0, 1] }]
+   [{ "pack_id": "7b2e7f9b-0d2f-4d7b-827a-e92ff37a3f34", "version": [1, 1, 0] }]
    ```
 5. Restart the server.
 
@@ -53,7 +54,7 @@ Double-click the newer `hearthstone.mcaddon`. It replaces the old version. Your 
 
 1. **Set your home** by sleeping in a bed (or charging a respawn anchor in the Nether).
 2. **Hold the Hearthstone** and use it: right-click on PC, long-press on touch screens, or press the left trigger on a controller.
-3. **Wait 5 seconds** while the bar fills. Don't take damage, or you'll see *"Hearthstone interrupted: you took damage"* and need to start again.
+3. **Stand still for 5 seconds** while the bar fills. If you take damage or walk, you'll see *"Hearthstone interrupted"* and need to start again.
 4. You're teleported home.
 
 ### Crafting another Hearthstone
@@ -102,7 +103,7 @@ hearthstone_BP/              Behavior pack
   manifest.json
   items/hearthstone.json     The Hearthstone item
   recipes/                   Crafting recipes
-  scripts/main.js            Channeling, interrupts, teleport, starter stone
+  scripts/main.js            Channeling, effects, interrupts, teleport, starter stone
 hearthstone_RP/              Resource pack
   textures/items/hearthstone.png
 tools/make_textures.py       Generates the PNG textures
