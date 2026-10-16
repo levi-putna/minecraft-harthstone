@@ -1,4 +1,4 @@
-"""Generates the Hearthstone item texture and pack icons as PNGs (no dependencies)."""
+"""Generates the Hearthstone item texture as a PNG (no dependencies)."""
 import struct, zlib, sys
 
 def png(path, pixels, scale=1):
@@ -14,32 +14,32 @@ def png(path, pixels, scale=1):
             + chunk(b"IDAT", zlib.compress(raw, 9)) + chunk(b"IEND", b""))
     open(path, "wb").write(data)
 
-# Rounded grey stone with a glowing blue rune, in the spirit of the WoW hearthstone.
+# Grey octagonal stone with four gold studs around a glowing blue swirl,
+# matching the pack icons (which are drawn separately at 128x128).
 art = [
-    "................",
-    ".....######.....",
-    "...##aaaaaa##...",
-    "..#aabbbbbbaa#..",
-    "..#abbbbbbbbba#.",
-    ".#abbbbccbbbbb#.",
-    ".#abbbcddcbbbb#.",
-    ".#abbcdeedcbbb#.",
-    ".#abbcdeedcbbb#.",
-    ".#abbbcddcbbbs#.",
-    ".#abbbbccbbbss#.",
-    "..#abbbbbbbss#..",
-    "..#sbbbbbbsss#..",
-    "...##sssssss##..",
-    ".....######.....",
-    "................",
+    ".......Gg.......",
+    ".....##Gg##.....",
+    "....#LLmmmm#....",
+    "...#LL####mm#...",
+    "..#LL#DDDD#mm#..",
+    ".#LL#DCCCCD#ms#.",
+    ".#L#DCBBBBWD#s#.",
+    "GGm#DCBWWBCD#sgg",
+    "ggm#DCBBWBCD#sgg",
+    ".#m#DBCBBCCD#s#.",
+    ".#mm#DBCCCD#ss#.",
+    "..#mm#DDDD#ss#..",
+    "...#mm####ss#...",
+    "....#ssssss#....",
+    ".....##gg##.....",
+    ".......gg.......",
 ]
 pal = {
-    ".": (0, 0, 0, 0), "#": (40, 40, 48, 255), "a": (150, 150, 160, 255),
-    "b": (110, 110, 122, 255), "s": (78, 78, 90, 255), "c": (40, 110, 200, 255),
-    "d": (80, 170, 255, 255), "e": (200, 240, 255, 255),
+    ".": (0, 0, 0, 0), "#": (38, 38, 48, 255),
+    "L": (196, 196, 206, 255), "m": (140, 140, 154, 255), "s": (92, 92, 106, 255),
+    "G": (236, 178, 64, 255), "g": (176, 116, 40, 255),
+    "D": (18, 46, 160, 255), "B": (36, 104, 226, 255), "C": (90, 190, 255, 255), "W": (214, 244, 255, 255),
 }
 px = [[pal[c] for c in row] for row in art]
 out = sys.argv[1]
 png(f"{out}/hearthstone_RP/textures/items/hearthstone.png", px)
-png(f"{out}/hearthstone_RP/pack_icon.png", px, scale=8)
-png(f"{out}/hearthstone_BP/pack_icon.png", px, scale=8)

@@ -41,12 +41,12 @@ Double-click the newer `hearthstone.mcaddon`. It replaces the old version. Your 
 
    `world_behavior_packs.json`
    ```json
-   [{ "pack_id": "3e4165a1-baad-4564-a6b2-73a1747ad726", "version": [1, 1, 0] }]
+   [{ "pack_id": "3e4165a1-baad-4564-a6b2-73a1747ad726", "version": [1, 1, 1] }]
    ```
 
    `world_resource_packs.json`
    ```json
-   [{ "pack_id": "7b2e7f9b-0d2f-4d7b-827a-e92ff37a3f34", "version": [1, 1, 0] }]
+   [{ "pack_id": "7b2e7f9b-0d2f-4d7b-827a-e92ff37a3f34", "version": [1, 1, 1] }]
    ```
 5. Restart the server.
 
@@ -88,7 +88,7 @@ On macOS or Linux:
 
 This zips both packs into `hearthstone.mcaddon`.
 
-To regenerate the textures after editing the pixel art in `tools/make_textures.py`:
+To regenerate the item texture after editing the pixel art in `tools/make_textures.py` (the pack icons are drawn separately):
 
 ```sh
 python3 tools/make_textures.py "$PWD"
