@@ -1,8 +1,8 @@
 import { world, system, ItemStack } from "@minecraft/server";
 
-const ITEM_ID = "hs:hearthstone";
+const ITEM_ID = "anchorstone:anchorstone";
 const CHANNEL_TICKS = 100; // 5 seconds at 20 ticks/second; the teleport fires here
-const STARTER_TAG = "hs_got_starter_hearthstone";
+const STARTER_TAG = "anchorstone_got_starter";
 const BAR_LENGTH = 20;
 
 // Rising ring of flames around the player while channeling.
@@ -35,7 +35,7 @@ const BURST_PARTICLES = [RING_PARTICLE, "minecraft:soul_particle"];
 
 // Ticking areas preload the destination during the channel. Their names are
 // saved so any left behind by a crash or restart get removed on world load.
-const AREAS_PROPERTY = "hs:tickingAreas";
+const AREAS_PROPERTY = "anchorstone:tickingAreas";
 
 // Fallback respawn without a bed, following the spawnRadius game rule.
 const DEFAULT_SPAWN_RADIUS = 5;
@@ -45,7 +45,7 @@ const SPAWN_SEARCH_RADIUS = 8; // stays inside the 2-chunk preloaded area
 /** playerId -> { player, ticks, anchor, destination, area } */
 const channels = new Map();
 
-function giveHearthstone(player) {
+function giveAnchorstone(player) {
   const item = new ItemStack(ITEM_ID, 1);
   const leftover = player.getComponent("minecraft:inventory").container.addItem(item);
   if (leftover) player.dimension.spawnItem(leftover, player.location);
@@ -110,7 +110,7 @@ function savedAreas() {
 }
 
 function addArea(player, destination) {
-  const area = { name: `hs_${player.id}`, dimension: destination.dimension.id };
+  const area = { name: `anchorstone_${player.id}`, dimension: destination.dimension.id };
   const { x, z } = destination;
   tryCommand(destination.dimension, `tickingarea add circle ${Math.floor(x)} 64 ${Math.floor(z)} 2 "${area.name}"`);
   world.setDynamicProperty(AREAS_PROPERTY, JSON.stringify([...savedAreas(), area]));
@@ -143,7 +143,7 @@ function endChannel(id) {
 function cancelChannel(player, reason) {
   if (!endChannel(player.id)) return;
   clearChannelEffects(player);
-  player.onScreenDisplay.setActionBar(`§cHearthstone interrupted: ${reason}`);
+  player.onScreenDisplay.setActionBar(`§cAnchorstone interrupted: ${reason}`);
   player.playSound("note.bass");
 }
 
@@ -288,7 +288,7 @@ system.runInterval(() => {
       const filled = Math.floor((ticks / CHANNEL_TICKS) * BAR_LENGTH);
       const secondsLeft = ((CHANNEL_TICKS - ticks) / 20).toFixed(1);
       player.onScreenDisplay.setActionBar(
-        `§bHearthstone §f[§b${"|".repeat(filled)}§7${"|".repeat(BAR_LENGTH - filled)}§f] ${secondsLeft}s`
+        `§bAnchorstone §f[§b${"|".repeat(filled)}§7${"|".repeat(BAR_LENGTH - filled)}§f] ${secondsLeft}s`
       );
       spawnRing(player, anchor, ticks / CHANNEL_TICKS);
     }
@@ -298,7 +298,7 @@ system.runInterval(() => {
 // Every player gets one stone the first time they join with the add-on active.
 world.afterEvents.playerSpawn.subscribe(({ player, initialSpawn }) => {
   if (!initialSpawn || player.hasTag(STARTER_TAG)) return;
-  giveHearthstone(player);
+  giveAnchorstone(player);
   player.addTag(STARTER_TAG);
-  player.sendMessage("§bYou received a Hearthstone. Use it to return home after 5 seconds.");
+  player.sendMessage("§bYou received an Anchorstone. Use it to return home after 5 seconds.");
 });

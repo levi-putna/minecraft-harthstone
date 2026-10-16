@@ -2,12 +2,12 @@
   "format_version": "1.21.40",
   "minecraft:item": {
     "description": {
-      "identifier": "hs:hearthstone",
+      "identifier": "anchorstone:anchorstone",
       "menu_category": { "category": "equipment" }
     },
     "components": {
-      "minecraft:icon": "hearthstone",
-      "minecraft:display_name": { "value": "Hearthstone" },
+      "minecraft:icon": "anchorstone",
+      "minecraft:display_name": { "value": "Anchorstone" },
       "minecraft:max_stack_size": 1,
       "minecraft:glint": true
     }

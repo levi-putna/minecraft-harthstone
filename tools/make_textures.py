@@ -1,4 +1,4 @@
-"""Generates the Hearthstone item texture as a PNG (no dependencies)."""
+"""Generates the Anchorstone item texture as a PNG (no dependencies)."""
 import struct, zlib, sys
 
 def png(path, pixels, scale=1):
@@ -42,4 +42,4 @@ pal = {
 }
 px = [[pal[c] for c in row] for row in art]
 out = sys.argv[1]
-png(f"{out}/hearthstone_RP/textures/items/hearthstone.png", px)
+png(f"{out}/anchorstone_RP/textures/items/anchorstone.png", px)

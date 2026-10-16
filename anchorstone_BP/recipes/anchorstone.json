@@ -2,7 +2,7 @@
   "format_version": "1.20.10",
   "minecraft:recipe_shapeless": {
     "description": {
-      "identifier": "hs:hearthstone_deepslate"
+      "identifier": "anchorstone:anchorstone"
     },
     "tags": [
       "crafting_table"
@@ -15,11 +15,11 @@
         "item": "minecraft:cobblestone"
       },
       {
-        "item": "minecraft:deepslate_lapis_ore"
+        "item": "minecraft:lapis_ore"
       }
     ],
     "result": {
-      "item": "hs:hearthstone"
+      "item": "anchorstone:anchorstone"
     },
     "unlock": [
       {

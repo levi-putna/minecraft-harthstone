@@ -1,24 +1,24 @@
 {
   "format_version": 2,
   "header": {
-    "name": "Hearthstone",
+    "name": "Anchorstone",
     "description": "Channel for 5 seconds to return home. Damage or walking interrupts.",
     "uuid": "3e4165a1-baad-4564-a6b2-73a1747ad726",
-    "version": [1, 1, 1],
+    "version": [2, 0, 0],
     "min_engine_version": [1, 21, 90]
   },
   "modules": [
-    { "type": "data", "uuid": "c3e71e98-6a6a-462e-b964-49ce9551bd5a", "version": [1, 1, 1] },
+    { "type": "data", "uuid": "c3e71e98-6a6a-462e-b964-49ce9551bd5a", "version": [2, 0, 0] },
     {
       "type": "script",
       "language": "javascript",
       "uuid": "72a6c991-cae9-4fc6-b2f9-792da233d71b",
       "entry": "scripts/main.js",
-      "version": [1, 1, 1]
+      "version": [2, 0, 0]
     }
   ],
   "dependencies": [
     { "module_name": "@minecraft/server", "version": "2.0.0" },
-    { "uuid": "7b2e7f9b-0d2f-4d7b-827a-e92ff37a3f34", "version": [1, 1, 1] }
+    { "uuid": "7b2e7f9b-0d2f-4d7b-827a-e92ff37a3f34", "version": [2, 0, 0] }
   ]
 }
